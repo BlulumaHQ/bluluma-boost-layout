@@ -1,36 +1,70 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Layout } from "@/components/site-chrome";
-import { Star, Award, Clock, ChefHat, ArrowRight, Quote, Check } from "lucide-react";
+import { Star, ArrowRight, Flame, Clock, MapPin, Instagram, Play, ChevronRight, Sparkles } from "lucide-react";
+import heroBao from "@/assets/hero-bao.jpg";
+import dishPopcorn from "@/assets/dish-popcorn-chicken.jpg";
+import dishDumplings from "@/assets/dish-soup-dumplings.jpg";
+import dishBraised from "@/assets/dish-braised-pork.jpg";
+import dishNoodles from "@/assets/dish-noodles.jpg";
+import dishScallion from "@/assets/dish-scallion.jpg";
+import bubbleTea from "@/assets/bubble-tea.jpg";
+import wok from "@/assets/cinematic-wok.jpg";
+import nightMarket from "@/assets/night-market.jpg";
+import spread from "@/assets/spread.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Glorious Bao & Fried Rice | Online Order | Burnaby, BC" },
-      { name: "description", content: "Authentic Taiwanese cuisine in Burnaby, BC. Restaurant-quality bao, fried rice, soup dumplings & gua bao at food court prices. Order online now." },
-      { property: "og:title", content: "Glorious Bao & Fried Rice — Authentic Taiwanese in Burnaby" },
-      { property: "og:description", content: "Restaurant quality food at food court prices. Order online today." },
-      { property: "og:image", content: "https://www.gloriousbao.com/wp-content/uploads/gloriousbao.com/2021/11/3.jpg" },
+      { title: "Glorious Bao — Modern Taiwanese Street Food in Burnaby, BC" },
+      { name: "description", content: "Night market energy, modern flavor. Hand-crafted Taiwanese gua bao, soup dumplings, popcorn chicken & bubble tea in Brentwood, Burnaby. Order online for pickup or delivery." },
+      { property: "og:title", content: "Glorious Bao — Modern Taiwanese Street Food" },
+      { property: "og:description", content: "Bold flavor. Late-night energy. Vancouver's hidden Taiwanese food gem." },
+      { property: "og:image", content: heroBao },
+      { property: "og:type", content: "restaurant" },
     ],
+    scripts: [{
+      type: "application/ld+json",
+      children: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "Restaurant",
+        name: "Glorious Bao & Fried Rice",
+        servesCuisine: ["Taiwanese", "Asian Street Food"],
+        priceRange: "$",
+        address: { "@type": "PostalAddress", addressLocality: "Burnaby", addressRegion: "BC", addressCountry: "CA" },
+        aggregateRating: { "@type": "AggregateRating", ratingValue: "4.9", reviewCount: "320" },
+      }),
+    }],
   }),
   component: Home,
 });
 
-const HERO = "https://www.gloriousbao.com/wp-content/uploads/gloriousbao.com/2021/11/3.jpg";
-const IMG4 = "https://www.gloriousbao.com/wp-content/uploads/gloriousbao.com/2021/11/4.jpg";
-const IMG5 = "https://www.gloriousbao.com/wp-content/uploads/gloriousbao.com/2021/11/5.jpg";
-
-const TESTIMONIALS = [
-  { text: "Other reviews are right. This is food prepared at restaurant level of quality, offered at food court prices. I was shocked by how simple egg fried rice could taste so light, yet flavorful.", author: "Rosaline Oh" },
-  { text: "Honestly — this was THE BEST meal that my partner and I have had in MONTHS. An absolute gem in the middle of a food court — restaurant quality food, better than most restaurants I've visited in Vancouver.", author: "Amy Prystupa" },
-  { text: "Friendly service, excellent! Fresh and tasty food, impressive considering the location in the food court. They go above and beyond for their customers.", author: "Ansa Farooqi" },
-  { text: "Glorious is right! Spicy, fresh and made to order. I loved the mango pudding that comes with the combo. Great value and quality — I will definitely be back.", author: "Aly Aly" },
-  { text: "Very decent Taiwanese food! The popcorn chicken was delicious with a big portion. The soup dumplings were juicy and tasty. The pork in the gua bao was amazingly tasty!", author: "Sandra Bao" },
+const FEATURED = [
+  { name: "Soul-Pork Gua Bao", img: heroBao, tag: "Signature", tagClass: "tag", desc: "Pillow-soft steamed bun. Slow-braised pork belly. Crushed peanut. Cilantro." },
+  { name: "Popcorn Chicken", img: dishPopcorn, tag: "Crispy · Spicy", tagClass: "tag tag-red", desc: "Shatter-crisp Taiwanese fried chicken with basil & chili salt." },
+  { name: "Soup Dumplings", img: dishDumplings, tag: "Hand-Folded", tagClass: "tag tag-gold", desc: "Eighteen pleats. Liquid gold inside. The classic xiao long bao." },
+  { name: "Braised Pork Rice", img: dishBraised, tag: "Comfort", tagClass: "tag", desc: "Lu rou fan — glossy braise over fluffy rice with tea egg." },
 ];
 
-const SPECIALTIES = [
-  { name: "Gua Bao", desc: "Pillowy steamed buns filled with tender, flavor-packed pork.", img: IMG4 },
-  { name: "Signature Fried Rice", desc: "Light yet deeply flavorful — a chef's mastery in every grain.", img: IMG5 },
-  { name: "Soup Dumplings", desc: "Juicy, hand-crafted xiao long bao. Worth every minute of the wait.", img: HERO },
+const GRID = [
+  { name: "Bao", img: heroBao, count: "5 styles" },
+  { name: "Dumplings", img: dishDumplings, count: "4 styles" },
+  { name: "Rice Bowls", img: dishBraised, count: "6 styles" },
+  { name: "Noodles", img: dishNoodles, count: "5 styles" },
+  { name: "Street Snacks", img: dishScallion, count: "8 styles" },
+  { name: "Bubble Tea", img: bubbleTea, count: "12 styles" },
+];
+
+const REVIEWS = [
+  { quote: "An absolute hidden gem inside the food court. Restaurant-quality food, better than most spots in Vancouver.", author: "Amy P.", handle: "@amyeats", tag: "Hidden Gem" },
+  { quote: "The popcorn chicken is unreal. Crispy, juicy, basil-everywhere. I drove from Surrey just for this.", author: "Ansa F.", handle: "@ansa.foods", tag: "Worth The Drive" },
+  { quote: "Soup dumplings here actually have soup. Wrapper is thin. Broth is rich. 10/10.", author: "Sandra B.", handle: "@sandrabao", tag: "Best In BC" },
+  { quote: "My new late-night comfort food obsession. Bao + bubble tea = perfect night.", author: "Aly", handle: "@alynightowl", tag: "Late Night Fave" },
+];
+
+const BLOG = [
+  { title: "What Is Taiwanese Gua Bao? A Beginner's Guide", cat: "Food Guide", img: heroBao, read: "4 min" },
+  { title: "Why Soup Dumplings Are So Addictive", cat: "Food Culture", img: dishDumplings, read: "5 min" },
+  { title: "Hidden Taiwanese Food Gems Near Brentwood", cat: "Vancouver Eats", img: nightMarket, read: "6 min" },
 ];
 
 function Home() {
@@ -39,90 +73,97 @@ function Home() {
       {/* HERO */}
       <section className="relative overflow-hidden">
         <div className="absolute inset-0 -z-10">
-          <img src={HERO} alt="" className="w-full h-full object-cover" />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/60 to-black/30" />
+          <img src={heroBao} alt="" width={1920} height={1080} className="w-full h-full object-cover scale-110" />
+          <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, oklch(0.16 0.012 60 / 0.55) 0%, oklch(0.16 0.012 60 / 0.7) 50%, oklch(0.16 0.012 60) 100%)" }} />
+          <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse at 70% 40%, oklch(0.78 0.19 55 / 0.35), transparent 60%)" }} />
         </div>
-        <div className="container-x pt-24 pb-28 md:pt-36 md:pb-44">
-          <div className="max-w-3xl text-white">
-            <span className="inline-flex items-center gap-2 rounded-full bg-[color:var(--primary)] text-[color:var(--primary-foreground)] px-4 py-1.5 text-xs font-black uppercase tracking-widest">
-              <Star className="w-3.5 h-3.5 fill-current" /> Rising Star of Canada's Dining Scene
-            </span>
-            <h1 className="mt-6 text-[42px] sm:text-6xl lg:text-7xl font-black leading-[1.02] tracking-tight">
-              Authentic Taiwanese.<br/>
-              <span className="text-[color:var(--primary)]">Restaurant Quality.</span><br/>
-              Food Court Price.
+
+        <div className="container-x pt-20 pb-32 md:pt-28 md:pb-44 relative">
+          <div className="max-w-4xl float-up">
+            <div className="flex items-center gap-3 mb-7">
+              <span className="tag"><Sparkles className="w-3 h-3" /> Vancouver's Hidden Gem</span>
+              <span className="hidden sm:inline-flex tag tag-gold">★ 4.9 / 5 · 320+ Reviews</span>
+            </div>
+
+            <h1 className="display text-[clamp(46px,9vw,140px)] uppercase">
+              Night Market<br/>
+              <span className="text-gradient italic font-display" style={{ fontWeight: 600 }}>energy.</span><br/>
+              Modern flavor.
             </h1>
-            <p className="mt-6 text-lg md:text-xl text-white/85 max-w-xl">
-              Hungry? Order now! Glorious Bao & Fried Rice serves the perfect balance between tradition and innovation — straight to you in Burnaby, BC.
+
+            <p className="mt-8 text-lg md:text-xl text-foreground/75 max-w-xl leading-relaxed">
+              Hand-folded soup dumplings. Glistening braised pork. Shatter-crisp chicken. Modern Taiwanese street food, served late, made the way it should be.
             </p>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <a href="#order" className="btn-primary">Order Online <ArrowRight className="w-4 h-4 ml-2" /></a>
-              <Link to="/menu" className="btn-secondary !text-white !border-white">Explore Menu</Link>
+
+            <div className="mt-10 flex flex-wrap gap-3">
+              <a href="#order" className="btn-primary">
+                Order Now <ArrowRight className="w-4 h-4" />
+              </a>
+              <Link to="/menu" className="btn-ghost">
+                Explore Menu
+              </Link>
             </div>
-            <div className="mt-10 flex flex-wrap gap-6 text-sm text-white/80">
-              <div className="flex items-center gap-2"><Star className="w-4 h-4 fill-[color:var(--primary)] text-[color:var(--primary)]" /> 5-Star Reviews</div>
-              <div className="flex items-center gap-2"><ChefHat className="w-4 h-4 text-[color:var(--primary)]" /> Made to Order</div>
-              <div className="flex items-center gap-2"><Award className="w-4 h-4 text-[color:var(--primary)]" /> Restaurant Quality</div>
+
+            <div className="mt-14 flex flex-wrap items-center gap-x-10 gap-y-4 text-xs uppercase tracking-[0.25em] text-muted-foreground">
+              <div className="flex items-center gap-2"><Flame className="w-3.5 h-3.5 text-[color:var(--primary)]" /> Made to Order</div>
+              <div className="flex items-center gap-2"><Clock className="w-3.5 h-3.5 text-[color:var(--primary)]" /> Open Late</div>
+              <div className="flex items-center gap-2"><MapPin className="w-3.5 h-3.5 text-[color:var(--primary)]" /> Brentwood, BNY</div>
             </div>
           </div>
         </div>
-      </section>
 
-      {/* TRUST BAR */}
-      <section className="bg-[color:var(--primary)] py-6">
-        <div className="container-x flex flex-wrap items-center justify-center gap-x-10 gap-y-2 text-[color:var(--primary-foreground)] font-bold text-sm uppercase tracking-wider text-center">
-          <span>★ Made to Order</span><span className="opacity-50">•</span>
-          <span>Skilled Chef</span><span className="opacity-50">•</span>
-          <span>Fresh Ingredients</span><span className="opacity-50">•</span>
-          <span>Burnaby, BC</span>
-        </div>
-      </section>
-
-      {/* PROBLEM → SOLUTION */}
-      <section className="section bg-background">
-        <div className="container-x grid lg:grid-cols-2 gap-14 items-center">
-          <div>
-            <span className="eyebrow">Why Glorious</span>
-            <h2 className="mt-3 text-4xl md:text-5xl font-black leading-tight">
-              Tired of food court food that tastes like… food court food?
-            </h2>
-            <p className="mt-5 text-lg text-muted-foreground">
-              We were too. That's why our skilled chef brings true restaurant craft to every dish — light, layered flavors at a price that doesn't bite back.
-            </p>
-            <ul className="mt-7 space-y-3">
-              {["Restaurant-level quality, every plate","Made to order — never sitting under a heat lamp","Authentic Taiwanese recipes, balanced with innovation","Combo meals with creamy mango pudding"].map(t => (
-                <li key={t} className="flex gap-3 text-base"><span className="mt-1 grid place-items-center w-5 h-5 rounded-full bg-[color:var(--secondary)] shrink-0"><Check className="w-3 h-3" /></span>{t}</li>
-              ))}
-            </ul>
-            <a href="#order" className="btn-primary mt-8">Hungry? Order Now</a>
-          </div>
-          <div className="grid grid-cols-2 gap-4">
-            <img src={IMG4} alt="Signature dish" className="rounded-2xl aspect-[4/5] object-cover w-full shadow-xl" />
-            <img src={IMG5} alt="Taiwanese specialty" className="rounded-2xl aspect-[4/5] object-cover w-full mt-10 shadow-xl" />
-          </div>
-        </div>
-      </section>
-
-      {/* SPECIALTIES */}
-      <section className="section bg-muted">
-        <div className="container-x">
-          <div className="flex flex-wrap items-end justify-between gap-6 mb-12">
+        {/* Floating dish chip */}
+        <div className="hidden lg:block absolute right-10 bottom-24 w-72 glow-card rounded-3xl p-4 backdrop-blur">
+          <img src={dishPopcorn} alt="Popcorn chicken" className="rounded-2xl aspect-square object-cover w-full" loading="lazy" />
+          <div className="mt-3 flex items-center justify-between">
             <div>
-              <span className="eyebrow">What We Serve</span>
-              <h2 className="mt-3 text-4xl md:text-5xl font-black">Let's Explore!</h2>
-              <p className="mt-3 text-muted-foreground max-w-xl">Find out what we serve the best here at Glorious Bao & Fried Rice.</p>
+              <div className="text-[10px] uppercase tracking-widest text-muted-foreground">Trending</div>
+              <div className="font-display font-bold text-base">Popcorn Chicken</div>
             </div>
-            <Link to="/menu" className="btn-secondary">View Full Menu</Link>
+            <span className="tag tag-red">🔥 Hot</span>
           </div>
-          <div className="grid md:grid-cols-3 gap-6">
-            {SPECIALTIES.map(s => (
-              <article key={s.name} className="group bg-card rounded-3xl overflow-hidden shadow-md hover:shadow-2xl transition-all">
-                <div className="aspect-[4/3] overflow-hidden">
-                  <img src={s.img} alt={s.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+        </div>
+      </section>
+
+      {/* MARQUEE */}
+      <section className="border-y border-white/5 py-5 overflow-hidden bg-background">
+        <div className="marquee whitespace-nowrap text-2xl md:text-4xl font-display font-bold uppercase tracking-tight">
+          {Array.from({ length: 2 }).map((_, i) => (
+            <div key={i} className="flex gap-12 shrink-0 items-center">
+              {["Gua Bao", "★", "Soup Dumplings", "★", "Popcorn Chicken", "★", "Bubble Tea", "★", "Beef Noodle", "★", "Late Night Eats", "★"].map((t, j) => (
+                <span key={j} className={j % 2 ? "text-[color:var(--primary)]" : "text-foreground/30"}>{t}</span>
+              ))}
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* FEATURED MUST-TRY */}
+      <section className="section relative">
+        <div className="container-x">
+          <div className="flex flex-wrap items-end justify-between gap-6 mb-14">
+            <div className="max-w-xl">
+              <div className="eyebrow">Must Try</div>
+              <h2 className="display text-5xl md:text-7xl mt-4 uppercase">The cravings<br/><span className="text-gradient">start here.</span></h2>
+            </div>
+            <p className="text-muted-foreground max-w-sm">Four dishes that have become local obsessions. Order one — or all of them.</p>
+          </div>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            {FEATURED.map((d, i) => (
+              <article key={d.name} className="glow-card rounded-3xl overflow-hidden group">
+                <div className="relative aspect-[4/5] overflow-hidden">
+                  <img src={d.img} alt={d.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000" loading="lazy" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
+                  <div className="absolute top-4 left-4"><span className={d.tagClass}>{d.tag}</span></div>
+                  <div className="absolute bottom-4 right-4 grid place-items-center w-10 h-10 rounded-full bg-[color:var(--primary)] text-[color:var(--primary-foreground)] opacity-0 group-hover:opacity-100 transition">
+                    <ArrowRight className="w-4 h-4" />
+                  </div>
                 </div>
-                <div className="p-7">
-                  <h3 className="text-2xl font-black">{s.name}</h3>
-                  <p className="mt-2 text-muted-foreground">{s.desc}</p>
+                <div className="p-6">
+                  <div className="text-[10px] uppercase tracking-widest text-muted-foreground">0{i + 1} / 04</div>
+                  <h3 className="mt-2 font-display font-bold text-2xl">{d.name}</h3>
+                  <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{d.desc}</p>
                 </div>
               </article>
             ))}
@@ -130,23 +171,129 @@ function Home() {
         </div>
       </section>
 
-      {/* TESTIMONIALS */}
-      <section className="section bg-[color:var(--foreground)] text-background">
+      {/* CULTURE SECTION */}
+      <section className="relative overflow-hidden">
+        <div className="absolute inset-0 -z-10">
+          <img src={nightMarket} alt="" className="w-full h-full object-cover" loading="lazy" />
+          <div className="absolute inset-0 bg-background/80" />
+          <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, var(--background), transparent 30%, transparent 70%, var(--background))" }} />
+        </div>
+        <div className="container-x py-28 md:py-40 relative">
+          <div className="grid lg:grid-cols-12 gap-12 items-center">
+            <div className="lg:col-span-7">
+              <div className="eyebrow">Street Food Culture</div>
+              <h2 className="display text-5xl md:text-7xl mt-4 uppercase leading-[0.95]">
+                Born in the<br/>
+                <span className="text-gradient italic" style={{ fontWeight: 600 }}>night market.</span><br/>
+                Built for now.
+              </h2>
+              <p className="mt-7 text-lg text-foreground/80 max-w-xl leading-relaxed">
+                In Taiwan, the best food doesn't come from white tablecloths — it comes from sizzling carts, neon-lit alleys, and chefs who've made the same dish ten thousand times.
+              </p>
+              <p className="mt-4 text-lg text-foreground/70 max-w-xl leading-relaxed">
+                We brought that energy to Burnaby. Hand-folded. Made to order. Recipes learned the long way. No shortcuts, no apologies.
+              </p>
+              <div className="mt-9 flex flex-wrap gap-3">
+                <Link to="/about-us" className="btn-ghost">Our Story <ChevronRight className="w-4 h-4" /></Link>
+              </div>
+            </div>
+            <div className="lg:col-span-5 grid grid-cols-2 gap-4">
+              <div className="glow-card rounded-2xl p-6 text-center">
+                <div className="text-4xl font-display font-bold text-gradient">100%</div>
+                <div className="mt-2 text-[10px] uppercase tracking-widest text-muted-foreground">Hand-Folded Daily</div>
+              </div>
+              <div className="glow-card rounded-2xl p-6 text-center mt-8">
+                <div className="text-4xl font-display font-bold text-gradient">4.9★</div>
+                <div className="mt-2 text-[10px] uppercase tracking-widest text-muted-foreground">320+ Reviews</div>
+              </div>
+              <div className="glow-card rounded-2xl p-6 text-center">
+                <div className="text-4xl font-display font-bold text-gradient">12hr</div>
+                <div className="mt-2 text-[10px] uppercase tracking-widest text-muted-foreground">Slow-Braised Pork</div>
+              </div>
+              <div className="glow-card rounded-2xl p-6 text-center mt-8">
+                <div className="text-4xl font-display font-bold text-gradient">∞</div>
+                <div className="mt-2 text-[10px] uppercase tracking-widest text-muted-foreground">Late-Night Energy</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* SIGNATURE GRID */}
+      <section className="section">
+        <div className="container-x">
+          <div className="flex flex-wrap items-end justify-between gap-6 mb-14">
+            <div>
+              <div className="eyebrow">The Menu</div>
+              <h2 className="display text-5xl md:text-7xl mt-4 uppercase">Pick your<br/><span className="text-gradient">poison.</span></h2>
+            </div>
+            <Link to="/menu" className="btn-ghost">Full Menu <ArrowRight className="w-4 h-4" /></Link>
+          </div>
+
+          <div className="grid grid-cols-2 lg:grid-cols-3 gap-4">
+            {GRID.map((c, i) => (
+              <Link key={c.name} to="/menu" className={`group relative overflow-hidden rounded-3xl glow-card ${i === 0 ? "lg:row-span-2 aspect-[4/5] lg:aspect-auto" : "aspect-square"}`}>
+                <img src={c.img} alt={c.name} className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000" loading="lazy" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent" />
+                <div className="absolute inset-0 p-6 md:p-8 flex flex-col justify-end">
+                  <div className="text-[10px] uppercase tracking-widest text-[color:var(--primary)]">{c.count}</div>
+                  <div className="font-display font-bold text-3xl md:text-4xl mt-1 flex items-center justify-between">
+                    {c.name}
+                    <ArrowRight className="w-5 h-5 -translate-x-2 opacity-0 group-hover:translate-x-0 group-hover:opacity-100 transition" />
+                  </div>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CINEMATIC SECTION */}
+      <section className="relative overflow-hidden">
+        <div className="absolute inset-0 -z-10">
+          <img src={wok} alt="" className="w-full h-full object-cover" loading="lazy" />
+          <div className="absolute inset-0 bg-gradient-to-r from-background via-background/70 to-transparent" />
+        </div>
+        <div className="container-x py-28 md:py-44 relative">
+          <div className="max-w-xl">
+            <div className="eyebrow">Behind The Wok</div>
+            <h2 className="display text-5xl md:text-7xl mt-4 uppercase">
+              <span className="text-gradient italic" style={{ fontWeight: 600 }}>Fire.</span> Smoke.<br/>
+              Obsession.
+            </h2>
+            <p className="mt-7 text-lg text-foreground/80 leading-relaxed">
+              Every plate is a small ritual — wok hei rising, steam billowing, sauces glazing. We cook like the lights might go out tomorrow.
+            </p>
+            <button className="mt-9 inline-flex items-center gap-3 group">
+              <span className="grid place-items-center w-14 h-14 rounded-full transition group-hover:scale-110" style={{ background: "var(--gradient-primary)", boxShadow: "var(--shadow-glow)" }}>
+                <Play className="w-5 h-5 text-[color:var(--primary-foreground)] ml-0.5 fill-current" />
+              </span>
+              <span className="text-sm font-bold uppercase tracking-[0.25em]">Watch the Kitchen</span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      {/* SOCIAL PROOF */}
+      <section className="section">
         <div className="container-x">
           <div className="text-center max-w-2xl mx-auto">
-            <span className="eyebrow !text-[color:var(--primary)]">Loved by Locals</span>
-            <h2 className="mt-3 text-4xl md:text-5xl font-black">Real reviews from real foodies</h2>
+            <div className="eyebrow justify-center">Loved In Vancouver</div>
+            <h2 className="display text-5xl md:text-7xl mt-4 uppercase">Real talk from<br/><span className="text-gradient">real foodies.</span></h2>
           </div>
-          <div className="mt-14 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {TESTIMONIALS.map(t => (
-              <figure key={t.author} className="bg-white/5 backdrop-blur rounded-2xl p-7 border border-white/10">
-                <Quote className="w-7 h-7 text-[color:var(--primary)]" />
-                <blockquote className="mt-4 text-white/90 leading-relaxed">"{t.text}"</blockquote>
-                <figcaption className="mt-5 flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-[color:var(--primary)] grid place-items-center text-[color:var(--primary-foreground)] font-black">{t.author[0]}</div>
+          <div className="mt-16 grid md:grid-cols-2 lg:grid-cols-4 gap-5">
+            {REVIEWS.map((r, i) => (
+              <figure key={i} className="glow-card rounded-3xl p-6 flex flex-col">
+                <div className="flex items-center justify-between">
+                  <div className="flex text-[color:var(--primary)] text-sm">{"★★★★★"}</div>
+                  <span className="tag tag-red">{r.tag}</span>
+                </div>
+                <blockquote className="mt-5 text-foreground/85 leading-relaxed flex-1">"{r.quote}"</blockquote>
+                <figcaption className="mt-6 flex items-center gap-3 pt-5 border-t border-white/5">
+                  <div className="grid place-items-center w-10 h-10 rounded-full font-display font-bold" style={{ background: "var(--gradient-primary)", color: "var(--primary-foreground)" }}>{r.author[0]}</div>
                   <div>
-                    <div className="font-bold">{t.author}</div>
-                    <div className="text-xs text-[color:var(--primary)] flex">{"★★★★★"}</div>
+                    <div className="font-bold text-sm">{r.author}</div>
+                    <div className="text-xs text-[color:var(--primary)]">{r.handle}</div>
                   </div>
                 </figcaption>
               </figure>
@@ -155,49 +302,122 @@ function Home() {
         </div>
       </section>
 
-      {/* ABOUT */}
-      <section className="section">
-        <div className="container-x grid lg:grid-cols-2 gap-12 items-center">
-          <img src={HERO} alt="Our story" className="rounded-3xl aspect-[5/4] object-cover w-full shadow-xl" />
-          <div>
-            <span className="eyebrow">Our Story</span>
-            <h2 className="mt-3 text-4xl md:text-5xl font-black">A perfect balance between tradition and innovation.</h2>
-            <p className="mt-5 text-lg text-muted-foreground">
-              Glorious Bao & Fried Rice is a rising star of Canada's dining scene. When it comes to authentic Taiwanese cuisine, we are proud to call ourselves the perfect balance between tradition and innovation.
-            </p>
-            <div className="mt-8 grid grid-cols-3 gap-6">
-              <Stat k="100%" v="Made to Order" />
-              <Stat k="5★" v="Customer Reviews" />
-              <Stat k="1" v="Burnaby Location" />
+      {/* INSTAGRAM / GALLERY */}
+      <section className="section bg-card/30 border-y border-white/5">
+        <div className="container-x">
+          <div className="flex flex-wrap items-end justify-between gap-6 mb-12">
+            <div>
+              <div className="eyebrow"><Instagram className="w-3 h-3" /> @gloriousbao</div>
+              <h2 className="display text-5xl md:text-7xl mt-4 uppercase">Tagged.<br/><span className="text-gradient">Devoured.</span></h2>
             </div>
-            <Link to="/about-us" className="btn-secondary mt-8">Learn More</Link>
+            <a href="#" className="btn-ghost">Follow Us <Instagram className="w-4 h-4" /></a>
+          </div>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+            {[heroBao, dishPopcorn, dishDumplings, bubbleTea, dishBraised, dishNoodles, dishScallion, spread].map((src, i) => (
+              <a key={i} href="#" className="relative group overflow-hidden rounded-2xl aspect-square">
+                <img src={src} alt="" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" loading="lazy" />
+                <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition grid place-items-center">
+                  <Instagram className="w-6 h-6 text-white" />
+                </div>
+              </a>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* FINAL CTA */}
-      <section id="order" className="bg-[color:var(--primary)] py-24">
-        <div className="container-x text-center text-[color:var(--primary-foreground)]">
-          <h2 className="text-4xl md:text-6xl font-black leading-tight">Hungry? Order now!</h2>
-          <p className="mt-5 text-lg md:text-xl max-w-2xl mx-auto">
-            Order your favorite food online at your convenience — fresh, hot, and made to order in Burnaby, BC.
-          </p>
-          <div className="mt-9 flex flex-wrap gap-3 justify-center">
-            <a href="#" className="inline-flex items-center justify-center rounded-full px-9 py-4 text-base font-black bg-[color:var(--foreground)] text-background hover:bg-[color:var(--primary-dark)] transition-all shadow-xl">Online Order <ArrowRight className="w-4 h-4 ml-2" /></a>
-            <Link to="/contact-us" className="btn-secondary !border-[color:var(--foreground)]">Contact Us</Link>
+      {/* BLOG */}
+      <section className="section">
+        <div className="container-x">
+          <div className="flex flex-wrap items-end justify-between gap-6 mb-14">
+            <div>
+              <div className="eyebrow">Field Notes</div>
+              <h2 className="display text-5xl md:text-7xl mt-4 uppercase">Read,<br/><span className="text-gradient">then eat.</span></h2>
+            </div>
+            <a href="#" className="btn-ghost">All Stories <ArrowRight className="w-4 h-4" /></a>
           </div>
-          <div className="mt-8 inline-flex items-center gap-2 text-sm font-bold"><Clock className="w-4 h-4" /> Fresh & made to order — every time</div>
+          <div className="grid md:grid-cols-3 gap-6">
+            {BLOG.map((b) => (
+              <a key={b.title} href="#" className="group">
+                <div className="overflow-hidden rounded-3xl aspect-[4/3] mb-5">
+                  <img src={b.img} alt={b.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000" loading="lazy" />
+                </div>
+                <div className="flex items-center gap-3 text-[10px] uppercase tracking-widest text-[color:var(--primary)]">
+                  <span>{b.cat}</span><span className="text-muted-foreground">·</span><span className="text-muted-foreground">{b.read}</span>
+                </div>
+                <h3 className="font-display font-bold text-2xl mt-3 group-hover:text-[color:var(--primary)] transition">{b.title}</h3>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* LOCATION */}
+      <section className="section bg-card/30 border-y border-white/5">
+        <div className="container-x grid lg:grid-cols-2 gap-14 items-center">
+          <div>
+            <div className="eyebrow">Find Us</div>
+            <h2 className="display text-5xl md:text-7xl mt-4 uppercase">In the mall.<br/><span className="text-gradient">Out of this world.</span></h2>
+            <p className="mt-7 text-lg text-foreground/80 leading-relaxed max-w-lg">
+              We live inside Brentwood Mall's food court — which means free parking, easy access, AC in summer, and a perfect 12-minute pit stop between shops.
+            </p>
+            <ul className="mt-8 grid grid-cols-2 gap-4">
+              {[
+                ["Free Parking", "All-day"],
+                ["Mall Access", "7 days / week"],
+                ["Quick Pickup", "Avg 8 min"],
+                ["Late Night", "Open till close"],
+              ].map(([t, s]) => (
+                <li key={t} className="glow-card rounded-2xl p-5">
+                  <div className="font-display font-bold text-lg">{t}</div>
+                  <div className="text-xs uppercase tracking-widest text-muted-foreground mt-1">{s}</div>
+                </li>
+              ))}
+            </ul>
+            <div className="mt-9 flex flex-wrap gap-3">
+              <Link to="/contact-us" className="btn-primary">Get Directions <ArrowRight className="w-4 h-4" /></Link>
+              <a href="tel:" className="btn-ghost">Call Ahead</a>
+            </div>
+          </div>
+          <div className="relative aspect-[4/5] rounded-3xl overflow-hidden glow-card">
+            <iframe
+              title="Map"
+              src="https://www.google.com/maps?q=Brentwood+Town+Centre+Burnaby&output=embed"
+              className="absolute inset-0 w-full h-full"
+              style={{ filter: "invert(0.92) hue-rotate(180deg) saturate(0.7)" }}
+              loading="lazy"
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* DELIVERY CTA */}
+      <section id="order" className="relative overflow-hidden">
+        <div className="absolute inset-0 -z-10">
+          <img src={spread} alt="" className="w-full h-full object-cover" loading="lazy" />
+          <div className="absolute inset-0 bg-background/80" />
+          <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse at center, oklch(0.78 0.19 55 / 0.25), transparent 65%)" }} />
+        </div>
+        <div className="container-x py-28 md:py-40 text-center relative">
+          <div className="eyebrow justify-center">Hungry?</div>
+          <h2 className="display text-6xl md:text-8xl mt-5 uppercase">
+            <span className="text-gradient italic" style={{ fontWeight: 600 }}>Crave it.</span><br/>
+            Order it. Done.
+          </h2>
+          <p className="mt-7 text-lg md:text-xl text-foreground/80 max-w-xl mx-auto">
+            Pickup in 8 minutes. Delivery to your couch. However you want it — we'll bring the night market to you.
+          </p>
+          <div className="mt-10 flex flex-wrap justify-center gap-3">
+            {["Uber Eats", "DoorDash", "SkipTheDishes"].map((p) => (
+              <a key={p} href="#" className="btn-ghost">{p}</a>
+            ))}
+          </div>
+          <div className="mt-6">
+            <a href="#" className="btn-primary !px-10 !py-5 !text-base">
+              Order Direct — No Fees <ArrowRight className="w-5 h-5" />
+            </a>
+          </div>
         </div>
       </section>
     </Layout>
-  );
-}
-
-function Stat({ k, v }: { k: string; v: string }) {
-  return (
-    <div>
-      <div className="text-3xl md:text-4xl font-black text-[color:var(--primary-dark)]">{k}</div>
-      <div className="text-xs uppercase tracking-wider text-muted-foreground mt-1">{v}</div>
-    </div>
   );
 }

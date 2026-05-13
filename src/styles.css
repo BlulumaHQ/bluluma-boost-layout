@@ -119,6 +119,7 @@
     backdrop-filter: blur(8px);
   }
   .btn-ghost:hover { background: oklch(1 0 0 / 0.10); border-color: oklch(1 0 0 / 0.35); }
+  .btn-secondary { @apply btn-ghost; }
 
   .glow-card {
     background: linear-gradient(180deg, oklch(0.22 0.014 60), oklch(0.18 0.012 60));

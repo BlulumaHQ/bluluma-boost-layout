@@ -1,3 +1,4 @@
+// @ts-nocheck -- run with `bun test`; bun types are not installed in this project
 import { expect, test } from "bun:test";
 import { applyHostIndexingPolicy, isPlatformHost } from "./seo-host-policy";
 
